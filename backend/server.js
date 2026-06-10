@@ -4,6 +4,7 @@ import "dotenv/config";
 import { connectDB } from "./config/db.js";
 import router from "./routes/auth.routes.js";
 import rankRouter from "./routes/rank.routes.js";
+import analysisRouter from "./routes/analysis.routes.js";
 
 
 const app = express();
@@ -15,6 +16,7 @@ app.get("/", (req, res) => res.send("Server is running"));
 
 app.use("/api/auth", router)
 app.use("/api/rank", rankRouter)
+app.use("/api/analysis", analysisRouter)
 
 const PORT = process.env.PORT || 5000;
 

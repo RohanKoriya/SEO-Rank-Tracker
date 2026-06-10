@@ -101,7 +101,7 @@ const keywordTrackingSchema = new mongoose.Schema({
 
 }, { timestamps: true })
 
-keywordTrackingSchema.index({ useId: 1, keyword: 1, domain: 1 }, { unique: true })
+keywordTrackingSchema.index({ userId: 1, keyword: 1, domain: 1 }, { unique: true })
 
 const KeywordTracking = mongoose.model("KeywordTracking", keywordTrackingSchema)
 

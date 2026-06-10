@@ -5,7 +5,7 @@ export const auth = async (req, res, next) => {
   try {
     const authHeader = req.headers.authorization;
 
-    if (!authHeader || !authHeader.statsWith("Bearer ")) {
+    if (!authHeader || !authHeader.startsWith("Bearer ")) {
       return res.status(401).json({ success: false, message: "Unauthorized: No token provided" })
     }
 
@@ -13,7 +13,11 @@ export const auth = async (req, res, next) => {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
     if (!decoded) return res.status(401).json({ message: "Unauthorized: Invalid token" });
 
-    req.userId = decoded.id;
+    req.userId = decoded.id || decoded.userId;
+    if (!req.userId) {
+      return res.status(401).json({ message: "Unauthorized: Invalid token payload" });
+    }
+
     next();
 
   }

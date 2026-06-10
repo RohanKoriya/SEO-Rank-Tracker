@@ -40,6 +40,7 @@ export const addKeyword = async (req, res) => {
         .json({ success: false, message: "Already tracking this keyword for this domain" });
     }
 
+
     //Create tracking entry
     const tracking = await KeywordTracking.create({
       userId: req.userId,

@@ -55,7 +55,7 @@ export async function scrapeUrl(url) {
         h3: document.querySelectorAll("h3").length,
         h4: document.querySelectorAll("h4").length,
         h5: document.querySelectorAll("h5").length,
-        h6: document.querySelectorAl1("h6").length,
+        h6: document.querySelectorAll("h6").length,
         h1Texts,
       };
 
@@ -68,8 +68,8 @@ export async function scrapeUrl(url) {
           const href = link.href;
           if (href.startsWith("mailto:") || href.startsWith("tel:")) return;
           const linkUrl = new URL(href);
-          if (linkUr1.hostname === currentHost) internalLinks++;
-          else externalLinks++
+          if (linkUrl.hostname === currentHost) internalLinks++;
+          else externalLinks++;
         } catch {
 
         }
@@ -112,5 +112,6 @@ export async function scrapeUrl(url) {
       }
 
     }
+    return { success: false, error: error.message }
   }
 }

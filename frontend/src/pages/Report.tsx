@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import ScoreGauge from "../components/ScoreGauge";
 import IssueCard from "../components/IssueCard";
+
+import { generateSeoReportPDF } from "../services/pdfReportService";
 import {
   ArrowLeft,
   Globe,
@@ -15,6 +17,7 @@ import {
   ExternalLink,
   Type,
   Search,
+  Download,
 } from "lucide-react";
 
 import { useApp } from "../context/AppContext";
@@ -81,6 +84,7 @@ export default function Report() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [activeTab, setActiveTab] = useState("overview");
+  const [generatingPdf, setGeneratingPdf] = useState(false);
 
   const fetchAnalysis = async () => {
     try {
@@ -99,6 +103,20 @@ export default function Report() {
       setError("Failed to load analysis");
     }
     setLoading(false);
+  };
+
+  const handleDownloadPdf = async () => {
+    if (!analysis) return;
+
+    try {
+      setGeneratingPdf(true);
+
+      generateSeoReportPDF(analysis);
+    } catch (error) {
+      console.error("PDF generation failed:", error);
+    } finally {
+      setGeneratingPdf(false);
+    }
   };
 
   const getScoreClass = (s: number) => {
@@ -201,7 +219,7 @@ export default function Report() {
             <ArrowLeft size={16} />
             Back to Dashboard
           </Link>
-          <div className="flex flex-col sm:flex-row sm:items-center gap-3">
+          <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
             <div className="flex-1 min-w-0">
               <h1 className="text-2xl font-medium text-foreground truncate">
                 {new URL(analysis.url).hostname}
@@ -222,6 +240,16 @@ export default function Report() {
                 </span>
               </div>
             </div>
+
+            <button
+              onClick={handleDownloadPdf}
+              disabled={generatingPdf}
+              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl border border-border bg-card hover:bg-muted/50 transition-all disabled:opacity-50"
+            >
+              <Download size={16} />
+
+              {generatingPdf ? "Generating PDF..." : "Download Detailed Report"}
+            </button>
           </div>
         </div>
 

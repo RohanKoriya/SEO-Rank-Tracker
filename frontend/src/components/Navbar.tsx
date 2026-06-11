@@ -48,7 +48,7 @@ export default function Navbar() {
           <Link to="/" className="flex items-center gap-2 group">
             <ChartNoAxesColumnIcon />
             <span className="text-xl tracking-tight text-foreground">
-              Rank Pilot
+              Ranklytics
             </span>
           </Link>
 

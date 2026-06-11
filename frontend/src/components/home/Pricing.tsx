@@ -1,62 +1,150 @@
 import { Link } from "react-router-dom";
-import { CheckCircle } from "lucide-react";
+import { CheckIcon } from "lucide-react";
 
 export default function Pricing() {
-    return (
-        <section className="relative md:min-h-screen flex flex-col justify-center items-center max-lg:py-24">
-            <div className="bg-dot-pattern absolute inset-0 -z-1 opacity-10"></div>
-            <div className="max-w-5xl w-full mx-auto px-4 ">
-                <div className="text-center mb-14">
-                    <h2 className="text-3xl sm:text-4xl font-semibold mb-4 text-foreground">
-                        Simple <span className="gradient-text">Pricing</span>
-                    </h2>
-                    <p className="text-muted-foreground">Start free. Upgrade when you need more.</p>
-                </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto">
-                    {/* Free */}
-                    <div className="bg-card border border-border rounded-2xl p-8 flex flex-col">
-                        <h3 className="text-xl font-semibold mb-1 text-foreground">Free</h3>
-                        <div className="flex items-baseline gap-1 mb-6">
-                            <span className="text-4xl font-bold text-foreground">$0</span>
-                            <span className="text-muted-foreground">/month</span>
-                        </div>
-                        <ul className="space-y-3 mb-8 flex-1">
-                            {["5 analyses per day", "Full SEO report", "Keyword analysis", "Issue detection", "Export results"].map((item) => (
-                                <li key={item} className="flex items-center gap-2 text-sm text-muted-foreground">
-                                    <CheckCircle size={16} className="text-primary shrink-0" />
-                                    {item}
-                                </li>
-                            ))}
-                        </ul>
-                        <Link to="/register" className="block w-full py-3 rounded-xl bg-primary/10 text-secondary-foreground text-center text-sm  hover:opacity-90 transition-colors">
-                            Get Started Free
-                        </Link>
-                    </div>
+  return (
+    <section className="relative py-24 md:py-32">
+      <div
+        className="absolute inset-x-0 top-0 h-px bg-border"
+        aria-hidden="true"
+      />
 
-                    {/* Pro */}
-                    <div className="relative rounded-2xl p-8 flex flex-col bg-card border border-primary/30 overflow-hidden">
-                        <div className="absolute top-4 right-4 px-3 py-1 rounded-full bg-primary text-primary-foreground text-xs font-medium" style={{ color: "var(--background)" }}>
-                            Popular
-                        </div>
-                        <h3 className="text-xl font-semibold mb-1 text-foreground">Pro</h3>
-                        <div className="flex items-baseline gap-1 mb-6">
-                            <span className="text-4xl font-bold text-primary">$19</span>
-                            <span className="text-muted-foreground">/month</span>
-                        </div>
-                        <ul className="space-y-3 mb-8 flex-1">
-                            {["Unlimited analyses", "Priority processing", "Competitor analysis", "Historical tracking", "API access", "Email reports"].map((item) => (
-                                <li key={item} className="flex items-center gap-2 text-sm text-muted-foreground">
-                                    <CheckCircle size={16} className="text-primary shrink-0" />
-                                    {item}
-                                </li>
-                            ))}
-                        </ul>
-                        <button className="w-full py-3 rounded-xl bg-primary text-primary-foreground text-center text-sm hover:opacity-90 transition-opacity" style={{ color: "var(--background)" }}>
-                            Upgrade to Pro
-                        </button>
-                    </div>
-                </div>
+      <div className="max-w-5xl mx-auto px-4 sm:px-6">
+        {/* Section header */}
+        <div className="text-center mb-14">
+          <p className="text-xs font-medium uppercase tracking-widest text-primary mb-3">
+            Pricing
+          </p>
+          <h2 className="text-3xl sm:text-4xl font-semibold text-foreground mb-4">
+            Simple, transparent <span className="gradient-text">pricing</span>
+          </h2>
+          <p className="text-muted-foreground">
+            Start free. Upgrade when your team needs more.
+          </p>
+        </div>
+
+        {/* Plans grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 max-w-2xl mx-auto">
+          {/* Free plan */}
+          <article className="bg-card border border-border rounded-2xl p-8 flex flex-col">
+            <div className="mb-6">
+              <h3 className="text-base font-semibold text-foreground mb-1">
+                Free
+              </h3>
+              <p className="text-xs text-muted-foreground mb-5">
+                For individuals exploring SEO.
+              </p>
+              <div className="flex items-baseline gap-1">
+                <span className="text-4xl font-bold text-foreground tracking-tight">
+                  $0
+                </span>
+                <span className="text-sm text-muted-foreground">/month</span>
+              </div>
             </div>
-        </section>
-    );
+
+            <ul
+              className="space-y-3 mb-8 flex-1"
+              aria-label="Free plan features"
+            >
+              {[
+                "5 analyses per day",
+                "Full SEO report",
+                "Keyword analysis",
+                "Issue detection",
+                "Export results",
+              ].map((item) => (
+                <li
+                  key={item}
+                  className="flex items-start gap-2.5 text-sm text-muted-foreground"
+                >
+                  <CheckIcon
+                    size={14}
+                    className="text-primary shrink-0 mt-0.5"
+                    aria-hidden="true"
+                  />
+                  {item}
+                </li>
+              ))}
+            </ul>
+
+            <Link
+              to="/register"
+              className="block w-full py-2.5 rounded-lg border border-border bg-muted/50 text-foreground text-sm font-medium text-center hover:bg-muted transition-colors focus-visible:ring-2 focus-visible:ring-primary/40 outline-none"
+            >
+              Get started free
+            </Link>
+          </article>
+
+          {/* Pro plan */}
+          <article
+            className="relative bg-card border-2 border-primary/50 rounded-2xl p-8 flex flex-col"
+            aria-label="Pro plan — most popular"
+          >
+            {/* Popular badge */}
+            <div className="absolute -top-3 left-1/2 -translate-x-1/2">
+              <span
+                className="inline-flex items-center px-3 py-1 rounded-full bg-primary text-[11px] font-semibold tracking-wide"
+                style={{ color: "var(--background)" }}
+              >
+                Most popular
+              </span>
+            </div>
+
+            <div className="mb-6 mt-1">
+              <h3 className="text-base font-semibold text-foreground mb-1">
+                Pro
+              </h3>
+              <p className="text-xs text-muted-foreground mb-5">
+                For professionals who need it all.
+              </p>
+              <div className="flex items-baseline gap-1">
+                <span className="text-4xl font-bold text-primary tracking-tight">
+                  $19
+                </span>
+                <span className="text-sm text-muted-foreground">/month</span>
+              </div>
+            </div>
+
+            <ul
+              className="space-y-3 mb-8 flex-1"
+              aria-label="Pro plan features"
+            >
+              {[
+                "Unlimited analyses",
+                "Priority processing",
+                "Competitor analysis",
+                "Historical tracking",
+                "API access",
+                "Email reports",
+              ].map((item) => (
+                <li
+                  key={item}
+                  className="flex items-start gap-2.5 text-sm text-muted-foreground"
+                >
+                  <CheckIcon
+                    size={14}
+                    className="text-primary shrink-0 mt-0.5"
+                    aria-hidden="true"
+                  />
+                  {item}
+                </li>
+              ))}
+            </ul>
+
+            <button
+              className="w-full py-2.5 rounded-lg bg-primary text-sm font-medium hover:opacity-90 active:scale-[0.99] transition-all focus-visible:ring-2 focus-visible:ring-primary/40 outline-none"
+              style={{ color: "var(--background)" }}
+            >
+              Upgrade to Pro
+            </button>
+
+            {/* Coming soon note — preserving original "not working future feature" intent */}
+            <p className="mt-3 text-center text-[11px] text-muted-foreground/60">
+              Payments coming soon
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+  );
 }

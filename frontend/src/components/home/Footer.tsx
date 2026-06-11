@@ -1,58 +1,104 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import { SiGithub, SiX } from "@icons-pack/react-simple-icons";
 import { ChartNoAxesColumnIcon } from "lucide-react";
-import { homefooterLinks } from "../../assets/assets";
-import { SiX, SiInstagram, SiFacebook, SiTwitch } from "@icons-pack/react-simple-icons";
 
 export default function Footer() {
-    return (
-        <footer className="border-t border-border py-12 bg-card text-foreground">
-            <div className="max-w-7xl mx-auto px-4">
-                <div className="grid grid-cols-2 md:grid-cols-6 gap-12 mb-12">
-                    <div className="col-span-2">
-                        <div className="flex items-center gap-2 mb-4">
-                            <ChartNoAxesColumnIcon className="text-primary" />
-                            <span className="text-xl">Rank Pilot</span>
-                        </div>
-                        <p className="text-sm text-muted-foreground mb-6 w-5/6">Optimize your website for search engines with AI-powered insights and real-time tracking.</p>
-                        <div className="flex items-center gap-4">
-                            <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
-                                <SiX size={20} />
-                            </a>
-                            <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
-                                <SiInstagram size={20} />
-                            </a>
-                            <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
-                                <SiFacebook size={20} />
-                            </a>
-                            <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
-                                <SiTwitch size={20} />
-                            </a>
-                        </div>
-                    </div>
+  return (
+    <footer className="border-t border-border bg-card">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 py-12">
+        {/* Top Section */}
+        <div className="flex flex-col md:flex-row justify-between gap-10">
+          {/* Brand */}
+          <div className="max-w-sm">
+            <div className="flex items-center gap-2 mb-4">
+              <div className="size-9 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center">
+                <ChartNoAxesColumnIcon size={18} className="text-primary" />
+              </div>
 
-                    {homefooterLinks.map((section: any) => (
-                        <div key={section.title}>
-                            <h3 className="mb-4">{section.title}</h3>
-                            <ul className="space-y-1">
-                                {section.links.map((link: any) => (
-                                    <li key={link}>
-                                        <a href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">
-                                            {link}
-                                        </a>
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
-                    ))}
-                </div>
-
-                <div className="pt-8 border-t border-border flex flex-col md:flex-row items-center justify-between gap-4">
-                    <p className="text-sm text-muted-foreground">© {new Date().getFullYear()} RankPilot. All rights reserved.</p>
-                    <div className="flex items-center gap-6">
-                        <span className="text-xs text-muted-foreground">Status: All Systems Operational</span>
-                    </div>
-                </div>
+              <span className="text-lg font-semibold text-foreground">
+                Ranklytics
+              </span>
             </div>
-        </footer>
-    );
+
+            <p className="text-sm text-muted-foreground leading-relaxed">
+              AI-powered SEO audits, website analysis, and keyword tracking
+              designed to help websites improve search visibility.
+            </p>
+          </div>
+
+          {/* Links */}
+          <div>
+            <h3 className="text-xs uppercase tracking-widest text-muted-foreground mb-4">
+              Navigation
+            </h3>
+
+            <div className="flex flex-wrap gap-5">
+              <a
+                href="/dashboard"
+                className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+              >
+                Dashboard
+              </a>
+
+              <a
+                href="/analyze"
+                className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+              >
+                Analyze
+              </a>
+
+              <a
+                href="/rank-tracker"
+                className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+              >
+                Rank Tracker
+              </a>
+
+              <a
+                href="https://github.com/yourusername"
+                target="_blank"
+                rel="noreferrer"
+                className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+              >
+                GitHub
+              </a>
+            </div>
+          </div>
+        </div>
+
+        {/* Divider */}
+        <div className="my-8 border-t border-border" />
+
+        {/* Bottom */}
+        <div className="flex flex-col md:flex-row items-center justify-between gap-5">
+          <p className="text-xs text-muted-foreground">
+            © {new Date().getFullYear()} Ranklytics. Built by Rohan.
+          </p>
+
+          {/* Socials */}
+          <div className="flex items-center gap-3">
+            <a
+              href="https://github.com/rohankoriya"
+              className="size-9 rounded-xl border border-border bg-background
+          flex items-center justify-center
+          text-muted-foreground hover:text-foreground
+          hover:border-primary/30 transition-all"
+            >
+              <SiGithub size={15} />
+            </a>
+
+            <a
+              href="#"
+              className="size-9 rounded-xl border border-border bg-background
+          flex items-center justify-center
+          text-muted-foreground hover:text-foreground
+          hover:border-primary/30 transition-all"
+            >
+              <SiX size={15} />
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
 }

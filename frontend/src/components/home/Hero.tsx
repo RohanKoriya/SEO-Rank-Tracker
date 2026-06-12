@@ -95,7 +95,7 @@ export default function Hero() {
         className="w-full max-w-xl mx-auto"
         aria-label="Analyze a website URL"
       >
-        <div className="flex items-center bg-card border border-border rounded-xl px-3 py-1.5 gap-2 focus-within:ring-2 focus-within:ring-primary/30 focus-within:border-primary/40 transition-all">
+        <div className="flex items-center bg-card border border-border rounded-full px-3 py-1.5 gap-2 focus-within:ring-2 focus-within:ring-primary/30 focus-within:border-primary/40 transition-all">
           <SearchIcon
             size={15}
             className="text-muted-foreground shrink-0 ml-1"
@@ -114,7 +114,7 @@ export default function Hero() {
           <button
             type="submit"
             id="hero-analyze-btn"
-            className="shrink-0 flex items-center gap-1.5 bg-primary text-primary-foreground text-sm font-medium px-4 py-2 rounded-lg hover:opacity-90 active:scale-[0.98] transition-all"
+            className="shrink-0 flex items-center gap-1.5 bg-primary text-primary-foreground text-sm font-medium px-4 py-2 rounded-full hover:opacity-90 active:scale-[0.98] transition-all"
             style={{ color: "var(--background)" }}
           >
             Analyze
